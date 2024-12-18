@@ -61,22 +61,23 @@ def pre_check() -> bool:
 
 
 def analyse_stream(vision_frame : VisionFrame, video_fps : Fps) -> bool:
-	global STREAM_COUNTER
+	#global STREAM_COUNTER
 
-	STREAM_COUNTER = STREAM_COUNTER + 1
-	if STREAM_COUNTER % int(video_fps) == 0:
-		return analyse_frame(vision_frame)
+	#STREAM_COUNTER = STREAM_COUNTER + 1
+	#if STREAM_COUNTER % int(video_fps) == 0:
+	#	return analyse_frame(vision_frame)
 	return False
 
 
 def analyse_frame(vision_frame : VisionFrame) -> bool:
-	content_analyser = get_content_analyser()
-	vision_frame = prepare_frame(vision_frame)
-	probability = content_analyser.run(None,
-	{
-		content_analyser.get_inputs()[0].name: vision_frame
-	})[0][0][1]
-	return probability > PROBABILITY_LIMIT
+	#content_analyser = get_content_analyser()
+	#vision_frame = prepare_frame(vision_frame)
+	#probability = content_analyser.run(None,
+	#{
+	#	content_analyser.get_inputs()[0].name: vision_frame
+	#})[0][0][1]
+	#return probability > PROBABILITY_LIMIT
+	return false
 
 
 def prepare_frame(vision_frame : VisionFrame) -> VisionFrame:
@@ -89,7 +90,8 @@ def prepare_frame(vision_frame : VisionFrame) -> VisionFrame:
 @lru_cache(maxsize = None)
 def analyse_image(image_path : str) -> bool:
 	frame = read_image(image_path)
-	return analyse_frame(frame)
+	#return analyse_frame(frame)
+	return false
 
 
 @lru_cache(maxsize = None)
